@@ -11,16 +11,15 @@ import json
 import re
 import time
 import hashlib
-import streamlit.components.v1 as components
 
 # ============================================================================
 # 🔒 SECURITY CONFIG - BẢO VỆ API KEY & RATE LIMITING
 # ============================================================================
 MAX_REQUESTS_PER_HOUR = 5  # Tối đa 10 lần soát xét/giờ
-MAX_FILE_SIZE_MB = 5  # Mỗi file PDF tối đa 5MB
+MAX_FILE_SIZE_MB = 25 # Mỗi file PDF tối đa 5MB
 ALLOWED_FILE_EXTENSIONS = ['.pdf']
 SESSION_TIMEOUT_MINUTES = 20  # Auto logout sau 20 phút không hoạt động
-
+ADMIN_RELOAD_INTERVAL = 90 # Admin page reload mỗi 120s
 # ==========================================
 # HÀM QUẢN LÝ LƯỢT SOÁT XÉT (BỘ NHỚ VĨNH CỬU)
 # ==========================================
@@ -56,11 +55,6 @@ def tang_luot_su_dung(username):
         
     with open(QUOTA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f)
-
-# --- KHO LƯU TRỮ BÁO CÁO CHO SẾP ---
-REPORTS_DIR = "reports_archive"
-if not os.path.exists(REPORTS_DIR):
-    os.makedirs(REPORTS_DIR)
 
 # --- TẠO VERSION TỰ ĐỘNG THEO FILE APP.PY ---
 try:
@@ -307,9 +301,9 @@ def load_rules_cached():
     return rules_text, rules_pdf, local_rule_files
 
 # ==========================================
-# HÀM GHI NHẬT KÝ TÍCH HỢP FILE HTML BÁO CÁO
+# HÀM GHI NHẬT KÝ
 # ==========================================
-def ghi_nhat_ky_he_thong(can_bo, danh_sach_file, danh_sach_gp=[], danh_sach_to_chuc=[], file_bao_cao=""):
+def ghi_nhat_ky_he_thong(can_bo, danh_sach_file, danh_sach_gp=[], danh_sach_to_chuc=[]):
     log_file = "nhat_ky_tham_dinh.csv"
     thoi_gian = datetime.now(timezone(timedelta(hours=7))).strftime("%Y-%m-%d %H:%M:%S")
     
@@ -321,8 +315,8 @@ def ghi_nhat_ky_he_thong(can_bo, danh_sach_file, danh_sach_gp=[], danh_sach_to_c
     with open(log_file, "a", newline="", encoding="utf-8-sig") as file:
         writer = csv.writer(file)
         if not file_exists:
-            writer.writerow(["Thời gian", "Cán bộ thẩm định", "Tổ chức/cá nhân", "Số Giấy phép", "Danh sách file tải lên", "File báo cáo"])
-        writer.writerow([thoi_gian, can_bo, to_chuc_str, so_gp_str, ten_file_str, file_bao_cao])
+            writer.writerow(["Thời gian", "Cán bộ thẩm định", "Tổ chức/cá nhân", "Số Giấy phép", "Danh sách file tải lên"])
+        writer.writerow([thoi_gian, can_bo, to_chuc_str, so_gp_str, ten_file_str])
 
 # ==========================================
 # ĐIỀU HƯỚNG BẰNG THAM SỐ URL (/?view=admin)
@@ -367,13 +361,15 @@ if view_mode != "admin":
     # CÔNG CỤ SOÁT XÉT (GIAO DIỆN CHÍNH)
     # ==========================================
     st.title("Soát xét giấy phép tần số")
+#   st.caption(f"Phiên bản: {APP_VERSION} | 🚀 Fixed Output Parser + 55% token tiết kiệm")
     st.caption(f"Phiên bản: {APP_VERSION} | PRO")
     with st.sidebar:
         st.markdown(f"**👤 Chuyên viên:** {st.session_state.logged_in_user}")
-        # Lấy số lượt sử dụng thực tế từ file JSON
+        st.markdown(f"**📊 Lần soát xét hôm nay:** {st.session_state.request_count_today}/{MAX_REQUESTS_PER_HOUR}")
+# Lấy số lượt sử dụng thực tế từ file JSON
         st.session_state.request_count_today = lay_luot_su_dung(st.session_state.logged_in_user)
         
-        st.sidebar.markdown(f"**📊 Lần soát xét hôm nay:** {st.session_state.request_count_today}/{MAX_REQUESTS_PER_HOUR}")        
+#       st.sidebar.markdown(f"**📊 Lần soát xét hôm nay:** {st.session_state.request_count_today}/{MAX_REQUESTS_PER_HOUR}")        
         if st.button("🚪 Đăng xuất", use_container_width=True):
             st.session_state.logged_in_user = None
             st.session_state.last_activity_time = None
@@ -576,23 +572,13 @@ OUTPUT BẮTNHAT CÓ LÀ JSON HỢP LỆ (KHÔNG MARKDOWN):
                             if match and match.group(1) not in danh_sach_gp:
                                 danh_sach_gp.append(match.group(1))
 
-                    # ----------------------------------------------------
-                    # CHUẨN BỊ TÊN FILE HTML ĐỂ LƯU VÀO NHẬT KÝ
-                    # ----------------------------------------------------
-                    timestamp_file = datetime.now(timezone(timedelta(hours=7))).strftime("%Y%m%d_%H%M%S")
-                    org_name_file = danh_sach_to_chuc[0] if danh_sach_to_chuc else "Khach_hang"
-                    clean_org_name_file = re.sub(r'[\\/*?:"<>|]', "", org_name_file)[:50].strip()
-                    report_filename = f"{timestamp_file}_{clean_org_name_file}.html"
-
                     ghi_nhat_ky_he_thong(
                         can_bo=st.session_state.logged_in_user, 
                         danh_sach_file=danh_sach_ten_file, 
                         danh_sach_gp=danh_sach_gp,
-                        danh_sach_to_chuc=danh_sach_to_chuc,
-                        file_bao_cao=report_filename
+                        danh_sach_to_chuc=danh_sach_to_chuc
                     )
-
-                    # --- TĂNG LƯỢT SỬ DỤNG ---
+                    # --- THÊM 2 DÒNG NÀY VÀO ---
                     tang_luot_su_dung(st.session_state.logged_in_user)
                     st.session_state.request_count_today = lay_luot_su_dung(st.session_state.logged_in_user)
                  
@@ -644,14 +630,19 @@ YÊU CẦU NGHIÊM NGẶT:
      + "4dBi" và "4,0 dBi" -> LÀ MỘT (Khớp 100%).
    **CẢNH BÁO TỐI CAO:** NẾU HAI GIÁ TRỊ CHỈ KHÁC NHAU VỀ CÁCH VIẾT SỐ THẬP PHÂN NHƯ TRÊN, CHÚNG ĐƯỢC TÍNH LÀ KHỚP 100%. BẠN PHẢI XÓA CHÚNG KHỎI BỘ NHỚ LỖI VÀ IM LẶNG HOÀN TOÀN. NẾU BẠN IN RA BÁO CÁO DÒNG NÀO CÓ CHỮ "51,90 KHÁC VỚI 51,9" HOẶC TƯƠNG TỰ, LÀ BẠN VI PHẠM KỶ LUẬT NGHIÊM TRỌNG.
 6. SOÁT XÉT THEO QUY TẮC: Đối chiếu chi tiết GP và BK theo quy tắc Mainrules. Đọc ô tích (☑), bỏ qua ô trống.
-7. TÍNH PHÍ, LỆ PHÍ: Chỉ thực hiện nếu có file TBP. Phí sử dụng giảm 50% theo TT 64 CHỈ cho mẫu 1g1 và 1g2.
+7. TÍNH PHÍ, LỆ PHÍ: Chỉ thực hiện nếu có file TBP. Phí sử dụng giảm 50% theo TT 64 CHỈ cho mẫu 1g1 và 1g2. Lưu ý các qui định tại Điều 4 của thông tư 265/2016/TT-BTC
+    Điều 4. Mức thu phí, lệ phí
+    1. Ban hành kèm theo Thông tư này Biểu mức thu lệ phí cấp giấy phép sử dụng tần số vô tuyến điện và phí sử dụng tần số vô tuyến điện.
+    2. Lệ phí cấp giấy phép được tính cho từng giấy phép sử dụng tần số vô tuyến điện.
+    a) Lệ phí gia hạn giấy phép được tính bằng 20% mức lệ phí cấp giấy phép.
+    b) Lệ phí sửa đổi, bổ sung nội dung giấy phép: không phải ấn định lại tần số, bằng 20% mức lệ phí cấp giấy phép; phải ấn định lại tần số, bằng lệ phí cấp giấy phép.
+    3. Phí sử dụng tần số vô tuyến điện được tính theo đơn vị tháng. Trường hợp tổng thời gian sử dụng dưới 01 tháng thì được tính là 01 tháng. Trường hợp tổng thời gian sử dụng từ 01 tháng trở lên, nếu phần lẻ từ 15 ngày trở lên thì tính lên thành 01 tháng, nếu phần lẻ dưới 15 ngày thì không tính phần lẻ.
+    Ví dụ: Ông A sử dụng tần số vô tuyến điện với tổng thời hạn là 14 ngày thì phí sử dụng tần số vô tuyến điện được tính cho 1 tháng.
+    Ông B sử dụng tần số vô tuyến điện từ ngày 01 tháng 01 năm 2017 đến ngày 15 tháng 01 năm 2018 với tổng thời hạn là 12 tháng và 15 ngày thì phí sử dụng tần số vô tuyến điện được tính cho 13 tháng.
+    Ông C sử dụng tần số vô tuyến điện từ ngày 01 tháng 01 năm 2017 đến ngày 14 tháng 01 năm 2018 với tổng thời hạn là 12 tháng và 14 ngày thì phí sử dụng tần số vô tuyến điện được tính cho 12 tháng.
+    4. Lệ phí cấp giấy phép sử dụng tần số vô tuyến điện và phí sử dụng tần số vô tuyến điện thu bằng đồng Việt Nam
 8. TỐI ƯU HÓA SAI LỆCH LẶP LẠI (TÊN TỔ CHỨC): Nếu nhiều hồ sơ của cùng một đơn vị có chung một lỗi sai lệch về "Tên tổ chức" giữa GP và BK, bạn CHỈ ĐƯỢC XUẤT LỖI NÀY 1 LẦN DUY NHẤT ở phần đầu báo cáo.
 9. TỐI ƯU HÓA BÁO CÁO CHUNG: BẠN CHỈ ĐƯỢC IN RA CÁC TRƯỜNG HỢP SAI LỆCH VỀ BẢN CHẤT. TUYỆT ĐỐI KHÔNG IN RA các trường hợp khớp 100% HOẶC khớp về mặt định dạng số thập phân.
-
-QUY TẮC TRÌNH BÀY BÁO CÁO (BẮT BUỘC TUÂN THỦ ĐỂ TIẾT KIỆM TOKEN):
-1. CẤM KHOE KHOANG TIẾN TRÌNH: Bạn phải tự tính toán, đếm số lượng và so sánh NGẦM TRONG ĐẦU. TUYỆT ĐỐI KHÔNG in ra quá trình giải toán, quy đổi phí hay các bước lập luận nếu kết quả cuối cùng là khớp.
-2. CẤM IN MỤC KHỚP: Ở phần "Chi tiết sai lệch", TUYỆT ĐỐI KHÔNG liệt kê bất kỳ thông số nào có trạng thái "✅ Khớp" hay "✅ Đúng". 
-3. CHỈ IN LỖI: Chỉ được phép xuất ra văn bản tại mục "Chi tiết sai lệch" khi có dòng bắt đầu bằng "❌ SAI LỆCH" hoặc "⚠️ LỖI" kèm theo giải thích nguyên nhân. Nếu một hồ sơ hoàn hảo, mục này phải để trống.
 
 FORMAT BÁO CÁO BẮT BUỘC:
 
@@ -661,7 +652,7 @@ FORMAT BÁO CÁO BẮT BUỘC:
 ## [Loại mẫu] - [Cấp mới / Gia hạn]: [Số GP hoặc Tên tổ chức]
 - **Tóm tắt ghép hồ sơ:** Đã ghép GP [Số] với Bản khai [Tên file] và TBP (nếu có).
 - **Trạng thái:** ✅ Hoàn toàn khớp / ❌ CÓ SAI LỆCH / ⚠️ LỖI
-- **Chi tiết sai lệch:**
+- **Chi tiết sai lệch (CẤM TUYỆT ĐỐI LIỆT KÊ CÁC LỖI NHƯ 51,90 KHÁC 51,9 VÀO ĐÂY):**
   - **[Tham số bị sai]: ❌ SAI LỆCH - [Nguồn A] KHÁC VỚI [Nguồn B].**
 ---"""
                     
@@ -696,38 +687,6 @@ FORMAT BÁO CÁO BẮT BUỘC:
                         "cost_usd": total_cost_usd,
                         "cost_vnd": total_cost_vnd
                     }
-
-                    # --- TỰ ĐỘNG LƯU BÁO CÁO VÀO KHO DỮ LIỆU ---
-                    report_path = os.path.join(REPORTS_DIR, report_filename)
-
-                    html_body_save = markdown.markdown(audit_text, extensions=['tables'])
-                    full_html = f"""
-                    <html>
-                    <head>
-                        <meta charset="utf-8">
-                        <style>
-                            body {{ font-family: 'Segoe UI', Tahoma, sans-serif; padding: 30px; line-height: 1.6; color: #333; max-width: 1000px; margin: auto; }}
-                            h1 {{ color: #004494; border-bottom: 2px solid #004494; padding-bottom: 10px; }}
-                            h2 {{ color: #d9534f; margin-top: 25px; border-bottom: 1px solid #eee; }}
-                            table {{ border-collapse: collapse; width: 100%; margin: 15px 0; }}
-                            th, td {{ border: 1px solid #ddd; padding: 12px; text-align: left; }}
-                            th {{ background-color: #f8f9fa; color: #004494; }}
-                            .footer {{ margin-top: 40px; font-size: 0.8em; color: #777; border-top: 1px solid #ddd; padding-top: 10px; }}
-                        </style>
-                    </head>
-                    <body>
-                        <h1>BÁO CÁO SOÁT XÉT TẦN SỐ</h1>
-                        <p><strong>Đơn vị:</strong> {org_name_file}</p>
-                        <p><strong>Chuyên viên thực hiện:</strong> {st.session_state.logged_in_user}</p>
-                        <p><strong>Thời gian:</strong> {datetime.now(timezone(timedelta(hours=7))).strftime('%d/%m/%Y %H:%M:%S')}</p>
-                        <hr>
-                        {html_body_save}
-                        <div class="footer">Dữ liệu được lưu trữ tự động bởi Hệ thống Soát xét Pro.</div>
-                    </body>
-                    </html>
-                    """
-                    with open(report_path, "w", encoding="utf-8") as f:
-                        f.write(full_html)
                     
                     # 📊 GHI NHẬT KÝ API USAGE
                     log_api_usage(
@@ -742,7 +701,7 @@ FORMAT BÁO CÁO BẮT BUỘC:
                     st.session_state.last_request_time = datetime.now(timezone(timedelta(hours=7)))
 
                     progress_bar.progress(100)
-                    status_text.success("✅ Hoàn thành! (Đã lưu tự động bản copy HTML vào thư viện)")
+                    status_text.success("✅ Hoàn thành! (1 API Call - 55% tiết kiệm token)")
 
                 except Exception as e:
                     st.error(f"❌ Lỗi: {str(e)}")
@@ -834,20 +793,13 @@ else:
     
     if st.session_state.admin_authenticated:
         st.success("Đăng nhập thành công!")
-        
-        col_title, col_refresh = st.columns([8, 2])
-        with col_title:
-            st.info("💡 **Hướng dẫn:** Sử dụng Hộp chọn bên dưới để xem báo cáo tương ứng.")
-        with col_refresh:
-            if st.button("🔄 Làm mới dữ liệu", use_container_width=True):
-                st.rerun()
-
         st.markdown("### 📊 Nhật ký sử dụng hệ thống")
+        st.caption(f"🔄 *Trang đang ở chế độ cập nhật tự động (Live): Dữ liệu sẽ làm mới sau mỗi {ADMIN_RELOAD_INTERVAL} giây.*")
         
         log_file = "nhat_ky_tham_dinh.csv"
         
         if os.path.exists(log_file):
-            # Đọc file CSV
+            # Đọc file CSV, tự động bỏ qua các dòng bị lỗi lệch cột để tránh sập web
             df = pd.read_csv(log_file, on_bad_lines='skip')
             
             df = df.rename(columns={
@@ -856,33 +808,7 @@ else:
                 "Cán bộ thẩm định": "Chuyên viên soát xét"
             })
             
-            if "File báo cáo" not in df.columns:
-                df["File báo cáo"] = None
-
-            # Đảo ngược bảng và reset_index
-            df_display = df.iloc[::-1].reset_index(drop=True)
-
-            if "Kết quả rà soát" in df_display.columns:
-                df_display = df_display.drop(columns=["Kết quả rà soát"])
-
-            # --- GIẢI PHÁP HỘP CHỌN (SELECTBOX) ---
-            st.markdown("---")
-            st.subheader("🔍 Xem nhanh báo cáo")
-            danh_sach_hoso = [f"{i+1}. {row['Thời gian']} - {row['Đơn vị/tổ chức']}" for i, row in df_display.iterrows()]
-            selected_hoso = st.selectbox("👉 CHỌN HỒ SƠ ĐỂ XEM CHI TIẾT BÁO CÁO:", options=["-- Hãy chọn một hồ sơ --"] + danh_sach_hoso)
-
-            st.markdown("---")
-            st.subheader("📅 Bảng nhật ký chi tiết")
-
-            # BẢNG BÂY GIỜ CHỈ ĐỂ XEM (ĐÃ GỠ BỎ TÍNH NĂNG CLICK)
-            st.dataframe(
-                df_display,
-                use_container_width=True,
-                height=400,
-                column_config={
-                    "File báo cáo": None 
-                }
-            )
+            st.dataframe(df.iloc[::-1], use_container_width=True, height=500)
             
             with open(log_file, "rb") as file:
                 st.download_button(
@@ -891,52 +817,25 @@ else:
                     file_name="Lich_su_tham_dinh.csv",
                     mime="text/csv",
                 )
-
-            # --- XỬ LÝ HIỂN THỊ BÁO CÁO ---
-            if selected_hoso != "-- Hãy chọn một hồ sơ --":
-                selected_index_sb = int(selected_hoso.split(".")[0]) - 1
-                file_name = df_display.iloc[selected_index_sb].get("File báo cáo", None)
-
-                # KIỂM TRA FILE CÓ BỊ RỖNG HAY KHÔNG (TRƯỜNG HỢP DỮ LIỆU CŨ)
-                if pd.isna(file_name) or str(file_name).strip() == "" or str(file_name).strip() == "nan":
-                    st.warning("⚠️ LƯU Ý: Phiên soát xét này không sinh ra file báo cáo (Có thể do dữ liệu cũ trước khi cập nhật chức năng lưu file).")
-                else:
-                    report_path = os.path.join(REPORTS_DIR, str(file_name).strip())
-                    if os.path.exists(report_path):
-                        st.markdown("---")
-                        st.markdown(f"### 📄 Đang hiển thị báo cáo: **{file_name}**")
-
-                        with open(report_path, "r", encoding="utf-8") as f:
-                            content = f.read()
-                        
-                        # Khung viền chứa nội dung HTML
-                        with st.container(border=True):
-                            st.components.v1.html(content, height=800, scrolling=True)
-                        
-                        st.download_button(
-                            label="📥 Tải file báo cáo này về máy",
-                            data=content,
-                            file_name=str(file_name),
-                            mime="text/html",
-                            key=f"dl_btn_{file_name}"
-                        )
-                    else:
-                        st.error(f"❌ Có tên file ({file_name}) nhưng không tìm thấy file vật lý trong thư mục '{REPORTS_DIR}'. Bạn hãy thử làm một phiên soát xét mới nhé.")
-
+            
+            # 📊 Hiển thị API Usage Log
+            st.markdown("---")
+            st.subheader("💰 Nhật ký chi phí API")
+            
+            api_log_file = "api_usage_log.csv"
+            if os.path.exists(api_log_file):
+                df_api = pd.read_csv(api_log_file)
+                st.dataframe(df_api.iloc[::-1], use_container_width=True, height=300)
+                
+                # Tính tổng chi phí
+                total_cost = df_api['Chi phí (USD)'].sum()
+                st.metric("💸 Tổng chi phí hôm nay (USD)", f"${total_cost:.4f}")
+                st.metric("💸 Tổng chi phí hôm nay (VNĐ)", f"{total_cost * 25400:,.0f}")
+            else:
+                st.info("Chưa có dữ liệu chi phí API.")
         else:
             st.info("Hệ thống chưa ghi nhận lượt sử dụng nào.")
 
-        st.markdown("---")
-        st.subheader("💰 Nhật ký chi phí API")
-        
-        api_log_file = "api_usage_log.csv"
-        if os.path.exists(api_log_file):
-            df_api = pd.read_csv(api_log_file)
-            st.dataframe(df_api.iloc[::-1], use_container_width=True, height=300)
-            
-            # Tính tổng chi phí
-            total_cost = df_api['Chi phí (USD)'].sum()
-            st.metric("💸 Tổng chi phí hôm nay (USD)", f"${total_cost:.4f}")
-            st.metric("💸 Tổng chi phí hôm nay (VNĐ)", f"{total_cost * 25400:,.0f}")
-        else:
-            st.info("Chưa có dữ liệu chi phí API.")
+        import time
+        time.sleep(ADMIN_RELOAD_INTERVAL)
+        st.rerun()
