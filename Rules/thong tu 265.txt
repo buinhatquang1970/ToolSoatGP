@@ -1,0 +1,207 @@
+BỘ TÀI CHÍNH
+-------	CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập - Tự do - Hạnh phúc 
+---------------
+Số: 265/2016/TT-BTC	Hà Nội, ngày 14 tháng 11 năm 2016
+ 
+THÔNG TƯ
+QUY ĐỊNH MỨC THU, CHẾ ĐỘ THU, NỘP, QUẢN LÝ VÀ SỬ DỤNG LỆ PHÍ CẤP GIẤY PHÉP SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN VÀ PHÍ SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN
+
+ 
+BIỂU MỨC THU LỆ PHÍ CẤP GIẤY PHÉP SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN VÀ PHÍ SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN
+(Ban hành kèm theo Thông tư số 265/2016/TT-BTC ngày 14 tháng 11 năm 2016 của Bộ trưởng Bộ Tài chính)
+A. LỆ PHÍ CẤP GIẤY PHÉP SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN:
+STT	Chỉ tiêu	Mức thu một lần cấp (1.000 đồng)
+I	Giấy phép sử dụng tần số và thiết bị vô tuyến điện(1):	 
+ 	Đối với các nghiệp vụ vô tuyến điện (trừ các khoản từ 2 đến 5 mục I này)	 
+1	P ≤ 1 w	50
+	1w < P ≤ 15w	300
+	P > 15 w	600
+2	Đối với tuyến vi ba, đài tàu biển, tàu bay	500
+3	Đối với thiết bị vô tuyến điện nghiệp dư	240
+4	Đối với đài vô tuyến điện đặt trên các phương tiện nghề cá, đài vô tuyến điện liên lạc với phương tiện nghề cá	50
+5	Đối với phát thanh, truyền hình:	 
+5.1	Cấp cho các đơn vị là cơ quan báo chí, doanh nghiệp truyền dẫn, phát sóng phát thanh, truyền hình	1.000
+5.2	Cấp cho tổ chức, cá nhân khác	200
+II	Giấy phép sử dụng băng tần	10.000
+III	Giấy phép sử dụng tần số và quỹ đạo vệ tinh	10.000
+(1) Lệ phí cấp giấy phép được tính cho từng giấy phép sử dụng tần số vô tuyến điện. Đối với trường hợp cấp phép theo mạng, theo hệ thống hoặc theo đài, lệ phí cấp giấy phép được tính theo máy phát có công suất lớn nhất trong mạng, trong hệ thống hoặc đài.
+B. PHÍ SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN
+(Khi cấp phép chính thức)
+STT	Chỉ tiêu	Mức thu cho 12 tháng (1.000 đồng)
+I	NGHIỆP VỤ CỐ ĐỊNH
+1	Tần số dưới 30 MHz: Tính trên mỗi tần số phát được ấn định cho 1 máy phát, tính theo băng tần và độ rộng băng tần chiếm dụng (BW)(2):	 
+	BW ≤ 5 kHz	800
+	BW > 5 kHz	1.200
+2	Tần số từ 30 MHz trở lên: Tính trên mỗi tần số phát được ấn định cho 1 máy phát, tính theo băng tần và độ rộng băng tần chiếm dụng)	 
+2.1	Băng tần từ 30 MHz đến 500 MHz:	 
+	BW ≤ 12,5 kHz	800
+	12,5 kHz < BW ≤ 25 kHz	1.200
+	25 kHz < BW ≤ 200 kHz	1.800
+	200 kHz < BW ≤ 500 kHz	3.000
+	500 kHz < BW ≤ 2.000 kHz	5.400
+	BW > 2.000 kHz	6.500
+2.2	Băng tần trên 500 MHz đến 1.000 MHz:	 
+	BW ≤ 12,5 kHz	700
+	12,5 kHz<BW≤ 25 kHz	1.000
+	25 kHz < BW ≤ 200 kHz	1.600
+	200 kHz < BW ≤ 500 kHz	2.800
+	500 kHz < BW ≤ 2.000 kHz	5.200
+	BW > 2.000 kHz	6.000
+2.3	Băng tần trên 1 GHz đến 3 GHz:	 
+	BW ≤ 3.500 kHz	1.400
+	3.500 kHz < BW ≤ 7.000 kHz	1.600
+	7.000 kHz < BW ≤ 14.000 kHz	2.200
+	BW > 14.000 kHz	4.000
+2.4	Băng tần trên 3 GHz đến 8,5 GHz:	 
+	BW ≤ 3.500 kHz	1.100
+	3.500 kHz < BW ≤ 7.000 kHz	1.300
+	7.000 kHz < BW ≤ 14.000 kHz	1.500
+	14.000 kHz < BW ≤ 28.000 kHz	2.000
+	BW> 28.000 kHz	3.200
+2.5	Băng tần trên 8,5 GHz đến 15,35 GHz:	 
+	BW ≤ 3.500 kHz	1.000
+	3.500 kHz < BW ≤ 7.000 kHz	1.100
+	7.000 kHz < BW ≤ 14.000 kHz	1.300
+	14.000 kHz < BW ≤ 28.000 kHz	1.800
+	28.000 kHz < BW ≤ 56.000 kHz	3.000
+	BW > 56.000 kHz	3.500
+2.6	Băng tần trên 15,35 GHz đến 23,6 GHz:	 
+	BW ≤ 7.000 kHz	900
+	7.000 kHz < BW ≤ 14.000 kHz	1.100
+	14.000 kHz < BW ≤ 28.000 kHz	1.600
+	28.000 kHz < BW ≤ 56.000 kHz	2.700
+	BW > 56.000 kHz	3.000
+2.7	Băng tần trên 23,6 GHz:	 
+	BW ≤ 7.000 kHz	800
+	7.000 kHz < BW ≤ 14.000 kHz	900
+	14.000 kHz < BW ≤ 28.000 kHz	1.200
+	28.000 kHz < BW ≤ 56.000 kHz	2.000
+	BW > 56.000 kHz	2.500
+3	Vi ba điểm-đa điểm, vi ba phát thanh, truyền hình lưu động: tính trên mỗi tần số được ấn định trên một trạm chính	 
+3.1	Băng tần từ 23,6 GHz trở xuống:	 
+	BW ≤ 2.000 kHz	3.000
+	2.000 kHz < BW ≤ 3.500 kHz	4.400
+	3.500 kHz < BW ≤ 7.000 kHz	6.000
+	7.000 kHz < BW ≤ 14.000 kHz	7.200
+	14.000 kHz < BW ≤ 28.000 kHz	10.200
+	28.000 kHz < BW ≤ 56.000 kHz	14.000
+	BW > 56.000 kHz	18.000
+3.2	Băng tần trên 23,6 GHz:	 
+	BW ≤ 7.000 kHz	2.800
+	7.000 kHz < BW ≤ 14.000 kHz	3.200
+	14.000 kHz < BW ≤ 28.000 kHz	4.000
+	28.000 kHz < BW ≤ 56.000 kHz	6.800
+	BW > 56.000 kHz	8.200
+4	Điện thoại không dây loại kéo dài thuê bao, hệ thống điện thoại không dây đa điểm và các loại tương đương
+(tính trên mỗi trạm chính):	 
+4.1	Đối với thiết bị sử dụng tần số cố định, tính trên mỗi tần số được ấn định	Bằng 20% mức phí tương ứng quy định ở khoản 2 mục I này
+4.2	Đối với thiết bị lựa chọn tần số tự động, tính trên cả đoạn băng tần hoạt động	Bằng 5% mức phí tương ứng quy định ở khoản 2 mục I này
+II	NGHIỆP VỤ DI ĐỘNG	 
+1	Nghiệp vụ di động hàng hải	 
+1.1	Đài bờ: tính trên mỗi tần số phát được ấn định cho 1 máy phát	 
+1.1.1	Cung cấp dịch vụ viễn thông công cộng:	 
+	- Sử dụng tần số thuộc băng tần MF/HF	5.000
+	- Sử dụng tần số thuộc băng tần VHF	2.500
+	- Sử dụng tần số theo quy hoạch để liên lạc với phương tiện nghề cá	1.500
+1.1.2	Không cung cấp dịch vụ viễn thông công cộng	Bằng 30% mức phí tương ứng quy định ở điểm 1.1.1 khoản 1 mục II này
+1.2	Đài tàu (tính trên 01 đài tàu và theo từng chủng loại thiết bị vô tuyến điện trang bị trên tàu):	 
+	- Thiết bị VHF;	1.000
+	- Thiết bị MF/HF;	1.500
+	- Thiết bị Inmarsat;	2.000
+	- Thiết bị dẫn đường hàng hải;	500
+	- Thiết bị khác ngoài các thiết bị trên (trừ thiết bị chỉ dùng cho mục đích phục vụ cấp cứu, cứu nạn; thiết bị chỉ thu)	500
+2	Nghiệp vụ di động hàng không	 
+2.1	Đài mặt đất thuộc nghiệp vụ di động hàng không (tính trên mỗi tần số phát được ấn định cho 1 máy phát)	1.200
+2.2	Đài máy bay (tính trên 01 máy bay)	 
+2.2.1	Đối với máy bay hành khách:	 
+	- Dưới 38 chỗ	2.400
+	- Từ 38 đến 100 chỗ	3.800
+	- Trên 100 chỗ	4.200
+2.2.2	Đối với máy bay vận tải:	 
+	- Trọng tải dưới 20 tấn	2.400
+	- Trọng tải từ 20 đến 80 tấn	3.800
+	- Trọng tải trên 80 tấn	4.200
+2.2.3	Đối với máy bay không theo tuyến cố định:	2.000
+3	Nghiệp vụ di động mặt đất	 
+3.1	Mạng viễn thông di động mặt đất nhắn tin dùng riêng (tính trên tần số phát được ấn định trên 1 máy phát, theo phạm vi hoạt động):	 
+	- Trong một tỉnh, thành phố trực thuộc Trung ương.	5.000
+	- Trong một khu nhà hoặc tương đương.	1.000
+3.2	Mạng viễn thông dùng riêng sử dụng tần số thuộc nghiệp vụ di động, mạng viễn thông di động mặt đất trung kế: Tính trên mỗi tần số được ấn định để sử dụng trong mạng và theo từng tỉnh, thành phố trực thuộc Trung ương hoặc theo phạm vi hoạt động:	 
+3.2.1	Độ rộng băng tần chiếm dụng của kênh tần số được ấn định là 12,5 kHz:	 
+	- Thành phố Hà Nội, Thành phố Hồ Chí Minh, Đà Nẵng, Hải Phòng, Cần Thơ.	11.000
+	- Các tỉnh khác.	5.000
+3.2.2	Độ rộng băng tần chiếm dụng của kênh tần số được ấn định là 25 kHz	Bằng 200% mức phí tại điểm 3.2.1 khoản 3 mục II này
+3.2.3	Độ rộng băng tần chiếm dụng của kênh tần số được ấn định là 6,25 kHz	Bằng 50% mức phí tại điểm 3.2.1 khoản 3 mục II này
+3.2.4	Mạng thông tin vô tuyến điện nội bộ chỉ gồm các thiết bị có công suất phát P ≤ 5w; Mạng dùng chung tần số.	Bằng 10% mức phí tương ứng tại các điểm 3.2.1, 3.2.2, 3.2.3 khoản 3 mục II này
+3.3	Mạng viễn thông di động mặt đất công cộng sử dụng băng tần số (tính trên mỗi MHz của băng tần được cấp, trên phạm vi toàn quốc)	 
+3.3.1	Nhóm băng tần ≤ 2.200 MHz	1.300.000
+3.3.2	Nhóm băng tần > 2.200 MHz	650.000
+4	Nghiệp vụ vô tuyến điện khác	 
+4.1	Đài di động đặt trên tàu sử dụng tần số thuộc nghiệp vụ di động (tính trên mỗi tần số phát được ấn định cho 1 máy phát)	1.200
+4.2	Đài vô tuyến điện liên lạc với phương tiện nghề cá (tính trên mỗi tần số phát được ấn định cho 1 máy phát)	300
+III	NGHIỆP VỤ QUẢNG BÁ	 
+1	Truyền hình	 
+1.1	Mạng đa tần: máy phát hình, phát sóng chương trình phục vụ nhiệm vụ chính trị, thông tin tuyên truyền thiết yếu của Trung ương, tính trên mỗi kênh tần số được ấn định theo mức công suất phát và vị trí đặt máy phát (đối với các đơn vị, doanh nghiệp truyền dẫn, phát sóng phát thanh, truyền hình số mặt đất được cấp phép sử dụng nhiều kênh tần số tại một điểm phát sóng, mức phí quy định tại điểm 1.1 khoản 1 mục III này chỉ áp dụng cho một kênh tần số tại một điểm phát sóng; đối với các kênh tần số còn lại, áp dụng mức phí quy định tại điểm 1.3 khoản 1 mục III này):	Hà Nội, TP. Hồ Chí Minh; Hải Phòng; Đà Nẵng; Cần Thơ	Các tỉnh, thành phố khác
+1.1.1	Đối với phân kênh là 8 MHz	 	 
+	P > 20 kW	24.000	18.000
+	10 kW < P < 20 kW	20.000	14.000
+	5 kW < P < 10 kW	16.000	11.000
+	2 kW < P < 5 kW	12.000	9.000
+	500 W < P < 2 kW	4.000	1.500
+	100 W < P ≤ 500 W	1.000	500
+	P ≤ 100 W	200	100
+1.1.2	Đối với phân kênh ∆B MHz nhỏ hơn 8 MHz	Bằng (∆B/8) mức phí tương ứng tại điểm 1.1.1 khoản 1 mục III này
+1.2	Mạng đa tần: Máy phát hình, phát sóng kênh chương trình truyền hình phục vụ nhiệm vụ chính trị, thông tin tuyên truyền thiết yếu của địa phương (đối với các đơn vị, doanh nghiệp truyền dẫn, phát sóng phát thanh, truyền hình số mặt đất được cấp phép sử dụng nhiều kênh tần số tại một điểm phát sóng, mức phí quy định tại điểm 1.2 khoản 1 mục III này chỉ áp dụng cho một kênh tần số tại một điểm phát sóng; đối với các kênh tần số còn lại, áp dụng mức phí quy định tại điểm 1.3 khoản 1 mục III này)	Bằng 50% mức phí tương ứng tại điểm 1.1 khoản 1 mục III này
+1.3	Mạng đa tần: Máy phát hình, phát sóng kênh chương trình khác, không phải kênh chương trình phục vụ nhiệm vụ chính trị, thông tin tuyên truyền thiết yếu	Bằng 300% mức phí tương ứng tại điểm 1.1 khoản 1 mục III này
+1.4	Mạng đơn tần	Bằng 70% mức phí tương ứng tại các điểm 1.1, 1.2, 1.3 khoản 1 mục III này
+2	Phát thanh, truyền thanh	 
+2.1	Phát thanh: tính trên mỗi kênh tần số được ấn định, theo các mức công suất phát (P):	 
+	P > 5 kW	4.800
+	2 kW < P ≤ 5 kW	3.000
+	1 kW < P ≤ 2 kW	1.400
+	300 W < P ≤ 1 kW	300
+	P ≤ 300 W	100
+2.2	Đài truyền thanh không dây của tổ chức, doanh nghiệp (tính trên mỗi kênh tần số được ấn định)	1.500
+IV	NGHIỆP VỤ CỐ ĐỊNH QUA VỆ TINH, DI ĐỘNG QUA VỆ TINH
+1	Đài vệ tinh trái đất	 
+1.1	Đài vệ tinh trái đất, tính theo độ rộng băng tần phát (trừ các điểm 1.2, 1.3, 1.4 khoản 1 mục IV này) có độ rộng băng tần chiếm dụng (BW):	 
+	BW ≤ 150 kHz	1.000
+	150 kHz < BW ≤ 2 MHz	5.000
+	2 MHz < BW ≤ 18 MHz	30.000
+	18 MHz < BW ≤ 36MHz	50.000
+	BW > 36 MHz	60.000
+1.2	Đối với các trạm đầu cuối cố định sử dụng chung dải tần đường lên vệ tinh, có độ rộng băng tần phát thay đổi theo nhu cầu sử dụng, thuộc hệ thống đa truy cập qua vệ tinh: mức phí tính cho mỗi trạm đầu cuối	1.000
+1.3	Thiết bị đầu cuối thuê bao thuộc hệ thống thông tin di động qua vệ tinh: mức phí tính cho mỗi thiết bị	240
+1.4	Đối với đài vệ tinh trái đất sử dụng tần số trong băng tần từ 12,75 GHz đến 13,25 GHz; đài vệ tinh trái đất chỉ thu (tính theo độ rộng băng tần thu)	Bằng 70% mức phí tương ứng quy định tại điểm 1.1 khoản 1 mục IV này
+2	Đài vệ tinh không gian, tính cho mỗi bộ phát đáp với băng thông 36 MHz.
+(Đối với bộ phát đáp có băng thông khác (∆B MHz), mức phí được tính bằng (∆B/36) mức tương ứng)	10.000
+V	NGHIỆP VỤ VÔ TUYẾN XÁC ĐỊNH	 
+ 	Đài vô tuyến điện thuộc nghiệp vụ vô tuyến xác định (trừ ra-đa đặt trên tàu biển, máy bay, phương tiện nghề cá): tính trên mỗi tần số phát được ấn định cho 1 máy phát, theo băng tần và độ rộng băng tần chiếm dụng	 
+1	Băng tần từ 23,6 GHz trở xuống:	 
+	BW ≤ 2.000 kHz	3.000
+	2.000 kHz < BW ≤ 3.500 kHz	4.400
+	3.500 kHz < BW ≤ 7.000 kHz	6.000
+	7.000 kHz < BW ≤ 14.000 kHz	7.200
+	14.000 kHz < BW ≤ 28.000 kHz	10.200
+	28.000 kHz < BW ≤ 56.000 kHz	14.000
+	BW > 56.000 kHz	18.000
+1	Băng tần trên 23,6 GHz:	 
+	BW ≤ 7.000 kHz	2.800
+	7.000 kHz < BW ≤ 14.000 kHz	3.200
+	14.000 kHz < BW ≤ 28.000 kHz	4.000
+	28.000 kHz < BW ≤ 56.000 kHz	6.800
+	BW > 56.000 kHz	8.200
+VI	NGHIỆP VỤ VÔ TUYẾN ĐIỆN NGHIỆP DƯ	 
+ 	Vô tuyến điện nghiệp dư, tính trên băng tần được cấp phép, theo quy định về băng tần cho nghiệp vụ vô tuyến điện nghiệp dư	240
+(2) Độ rộng băng tần chiếm dụng được tính theo các thông số của máy phát được cấp phép hoặc được ghi cụ thể trong giấy phép.
+C. PHÍ SỬ DỤNG TẦN SỐ VÔ TUYẾN ĐIỆN
+(Khi cấp phép thử nghiệm)
+STT	Chỉ tiêu	Mức thu cho 12 tháng (1.000 đồng)
+I	Thử nghiệm mạng và dịch vụ viễn thông
+1	Đối với băng tần số, tính trên mỗi MHz của băng tần được cấp trên một tỉnh, thành phố trực thuộc trung ương	40.000
+2	Đối với kênh tần số	Bằng 30% mức phí của loại phí sử dụng tần số vô tuyến điện quy định tại Phần B Biểu mức thu
+II	Thử nghiệm tính năng kỹ thuật của hệ thống phục vụ cho việc giới thiệu công nghệ, thiết bị, nghiên cứu, chế tạo ...
+1	Đối với băng tần số, tính trên mỗi MHz của băng tần được cấp trên một tỉnh, thành phố trực thuộc trung ương	2.000
+2	Đối với kênh tần số	Bằng 3% mức phí của loại phí sử dụng tần số vô tuyến điện quy định tại Phần B Biểu mức thu
+ 
